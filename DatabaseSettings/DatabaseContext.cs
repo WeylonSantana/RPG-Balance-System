@@ -50,7 +50,9 @@ namespace DatabaseSettings
             {
                 using (var cmd = DbConnection().CreateCommand())
                 {
-                    cmd.CommandText = "CREATE TABLE IF NOT EXISTS Player(level int, attack int, defense int, magicattack int, magicdefense int, speed int, hitpoints int)";
+                    cmd.CommandText = "DROP TABLE IF EXISTS Player";
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = "CREATE TABLE Player(Level int, Attack int, Defense int, MagicAttack int, MagicDefense int, Speed int, HitPoints int)";
                     cmd.ExecuteNonQuery();
                 }
             }
