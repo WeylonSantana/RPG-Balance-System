@@ -46,12 +46,12 @@ namespace Models
         public void Cells(DataGridView dataGridView)
         {
             int lvl = 0;
-            int hp = IntersectBalanceSystem.GetStatus(5);
-            int attack = IntersectBalanceSystem.GetStatus(0);
-            int defense = IntersectBalanceSystem.GetStatus(1);
-            int magicAttack = IntersectBalanceSystem.GetStatus(2);
-            int magicDefense = IntersectBalanceSystem.GetStatus(3);
-            int speed = IntersectBalanceSystem.GetStatus(4);
+            int hp = (int)IntersectBalanceSystem.hitPointsNum.Value;
+            int attack = (int)IntersectBalanceSystem.attackNum.Value;
+            int defense = (int)IntersectBalanceSystem.defenseNum.Value;
+            int magicAttack = (int)IntersectBalanceSystem.magicAttackNum.Value;
+            int magicDefense = (int)IntersectBalanceSystem.magicDefenseNum.Value;
+            int speed = (int)IntersectBalanceSystem.speedNum.Value;
 
             for (int i = 0; i < dataGridView.Rows.Count; i++)
             {

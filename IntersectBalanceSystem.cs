@@ -58,7 +58,7 @@ namespace IBS
 
         public static DataGridView player = new DataGridView();
 
-        public static DarkButton update = new DarkButton(); //-----> criar botão de update com função de atualizar, aumentar linhas maximas e minimas.
+        public static DarkButton update = new DarkButton();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -66,7 +66,7 @@ namespace IBS
             CreatingLabels();
             CreatingNums();
             CreatingDataGrid();
-            updating.MaxRow(GetStatus(6), player);
+            updating.MaxRow((int)maxLevelNum.Value, player);
         }
 
         private void CreatingLabels()
@@ -178,36 +178,17 @@ namespace IBS
         {
             DataGridViews.NewDataGrid(player, 230, 36, 1110, 440, "PlayerGrid");
             Controls.Add(player);
+
+            update.Text = "Update";
+            update.Location = new Point(100, 486);
+            update.MouseClick += Update_MouseClick;
+            Controls.Add(update);
         }
 
-        public static int GetStatus(int code)
+        private void Update_MouseClick(object sender, MouseEventArgs e)
         {
-            int value = 0;
-            switch (code)
-            {
-                case 0:
-                    value = (int)attackNum.Value;
-                    break;
-                case 1:
-                    value = (int)defenseNum.Value;
-                    break;
-                case 2:
-                    value = (int)magicAttackNum.Value;
-                    break;
-                case 3:
-                    value = (int)magicDefenseNum.Value;
-                    break;
-                case 4:
-                    value = (int)speedNum.Value;
-                    break;
-                case 5:
-                    value = (int)hitPointsNum.Value;
-                    break;
-                case 6:
-                    value = (int)maxLevelNum.Value;
-                    break;
-            }
-            return value;
+            var updating = new Updating();
+            updating.MaxRow((int)maxLevelNum.Value, player);
         }
     }
 }
