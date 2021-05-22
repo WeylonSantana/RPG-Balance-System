@@ -11,7 +11,7 @@ namespace FormControls
 {
     public class Labels
     {
-        public static DarkLabel NewLabel(DarkLabel label, string name, int x, int y)
+        public static DarkLabel NewLabel(DarkLabel label, int x, int y, string name)
         {
             label.Text = $"{name}";
             label.Location = new Point(x, y);

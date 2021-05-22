@@ -1,7 +1,7 @@
 ﻿
 namespace IBS
 {
-    partial class IBS
+    partial class IntersectBalanceSystem
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -36,6 +36,8 @@ namespace IBS
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.FlatBorder = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "IBS";
             this.Text = "Intersect Balancing System";

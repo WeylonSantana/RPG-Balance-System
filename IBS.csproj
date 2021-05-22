@@ -52,18 +52,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormControls\DataGridViews.cs" />
     <Compile Include="FormControls\Labels.cs" />
     <Compile Include="FormControls\NumericUpDowns.cs" />
-    <Compile Include="IBS.cs">
+    <Compile Include="IntersectBalanceSystem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IBS.Designer.cs">
-      <DependentUpon>IBS.cs</DependentUpon>
+    <Compile Include="IntersectBalanceSystem.Designer.cs">
+      <DependentUpon>IntersectBalanceSystem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Updating.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="IBS.resx">
-      <DependentUpon>IBS.cs</DependentUpon>
+    <EmbeddedResource Include="IntersectBalanceSystem.resx">
+      <DependentUpon>IntersectBalanceSystem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -88,8 +90,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
