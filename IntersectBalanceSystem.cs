@@ -22,41 +22,43 @@ namespace IBS
         }
 
         //Creating Labels
-        static DarkLabel titleLbl = new DarkLabel();
-        static DarkLabel AttackLbl = new DarkLabel();
-        static DarkLabel defenseLbl = new DarkLabel();
-        static DarkLabel magicAttackLbl = new DarkLabel();
-        static DarkLabel magicDefenseLbl = new DarkLabel();
-        static DarkLabel speedLbl = new DarkLabel();
-        static DarkLabel hitPointsLbl = new DarkLabel();
-        static DarkLabel baseDamageLbl = new DarkLabel();
-        static DarkLabel criticalFactorLbl = new DarkLabel();
-        static DarkLabel scallingStatLbl = new DarkLabel();
-        static DarkLabel scallingFactorLbl = new DarkLabel();
-        static DarkLabel pointsLbl = new DarkLabel();
-        static DarkLabel maxPointsLbl = new DarkLabel();
-        static DarkLabel maxLevelLbl = new DarkLabel();
-        static DarkLabel expBaseLbl = new DarkLabel();
-        static DarkLabel expFactorLbl = new DarkLabel();
+        public static DarkLabel titleLbl = new DarkLabel();
+        public static DarkLabel AttackLbl = new DarkLabel();
+        public static DarkLabel defenseLbl = new DarkLabel();
+        public static DarkLabel magicAttackLbl = new DarkLabel();
+        public static DarkLabel magicDefenseLbl = new DarkLabel();
+        public static DarkLabel speedLbl = new DarkLabel();
+        public static DarkLabel hitPointsLbl = new DarkLabel();
+        public static DarkLabel baseDamageLbl = new DarkLabel();
+        public static DarkLabel criticalFactorLbl = new DarkLabel();
+        public static DarkLabel scallingStatLbl = new DarkLabel();
+        public static DarkLabel scallingFactorLbl = new DarkLabel();
+        public static DarkLabel pointsLbl = new DarkLabel();
+        public static DarkLabel maxPointsLbl = new DarkLabel();
+        public static DarkLabel maxLevelLbl = new DarkLabel();
+        public static DarkLabel expBaseLbl = new DarkLabel();
+        public static DarkLabel expFactorLbl = new DarkLabel();
 
         //Creating NumericsUpDown
-        static DarkNumericUpDown attackNum = new DarkNumericUpDown();
-        static DarkNumericUpDown defenseNum = new DarkNumericUpDown();
-        static DarkNumericUpDown magicAttackNum = new DarkNumericUpDown();
-        static DarkNumericUpDown magicDefenseNum = new DarkNumericUpDown();
-        static DarkNumericUpDown speedNum = new DarkNumericUpDown();
-        static DarkNumericUpDown hitPointsNum = new DarkNumericUpDown();
-        static DarkNumericUpDown baseDamageNum = new DarkNumericUpDown();
-        static DarkNumericUpDown criticalFactorNum = new DarkNumericUpDown();
-        static DarkComboBox scallingStatCbo = new DarkComboBox();
-        static DarkNumericUpDown scallingFactorNum = new DarkNumericUpDown();
-        static DarkNumericUpDown pointsNum = new DarkNumericUpDown();
-        static DarkNumericUpDown maxPointsNum = new DarkNumericUpDown();
-        static DarkNumericUpDown maxLevelNum = new DarkNumericUpDown();
-        static DarkNumericUpDown expBaseNum = new DarkNumericUpDown();
-        static DarkNumericUpDown expFactorNum = new DarkNumericUpDown();
+        public static DarkNumericUpDown attackNum = new DarkNumericUpDown();
+        public static DarkNumericUpDown defenseNum = new DarkNumericUpDown();
+        public static DarkNumericUpDown magicAttackNum = new DarkNumericUpDown();
+        public static DarkNumericUpDown magicDefenseNum = new DarkNumericUpDown();
+        public static DarkNumericUpDown speedNum = new DarkNumericUpDown();
+        public static DarkNumericUpDown hitPointsNum = new DarkNumericUpDown();
+        public static DarkNumericUpDown baseDamageNum = new DarkNumericUpDown();
+        public static DarkNumericUpDown criticalFactorNum = new DarkNumericUpDown();
+        public static DarkComboBox scallingStatCbo = new DarkComboBox();
+        public static DarkNumericUpDown scallingFactorNum = new DarkNumericUpDown();
+        public static DarkNumericUpDown pointsNum = new DarkNumericUpDown();
+        public static DarkNumericUpDown maxPointsNum = new DarkNumericUpDown();
+        public static DarkNumericUpDown maxLevelNum = new DarkNumericUpDown();
+        public static DarkNumericUpDown expBaseNum = new DarkNumericUpDown();
+        public static DarkNumericUpDown expFactorNum = new DarkNumericUpDown();
 
-        DataGridView player = new DataGridView();
+        public static DataGridView player = new DataGridView();
+
+        public static DarkButton update = new DarkButton(); //-----> criar botão de update com função de atualizar, aumentar linhas maximas e minimas.
 
         private void Form1_Load(object sender, EventArgs e)
         {
