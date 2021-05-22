@@ -56,97 +56,100 @@ namespace IBS
         public static DarkNumericUpDown expBaseNum = new DarkNumericUpDown();
         public static DarkNumericUpDown expFactorNum = new DarkNumericUpDown();
 
-        public static DataGridView player = new DataGridView();
-
-        public static DarkButton update = new DarkButton();
+        //Creating Others
+        public static DataGridView playerGrid = new DataGridView();
+        public static DarkButton updateBtn = new DarkButton();
+        public static DarkCheckBox balancedBox = new DarkCheckBox();
+        public static DarkCheckBox strongBox = new DarkCheckBox();
+        public static DarkCheckBox tankBox = new DarkCheckBox();
 
         private void Form1_Load(object sender, EventArgs e)
         {
             var updating = new Updating();
             CreatingLabels();
             CreatingNums();
-            CreatingDataGrid();
-            updating.MaxRow((int)maxLevelNum.Value, player);
+            CreatingOthers();
+            updating.MaxRow((int)maxLevelNum.Value, playerGrid);
         }
 
         private void CreatingLabels()
         {
-            Labels.NewLabel(titleLbl, 10, 10, "Basic Character Status");
+            ControlCreate.NewLabel(titleLbl, 10, 10, "Basic Character Status");
             Controls.Add(titleLbl);
 
-            Labels.NewLabel(AttackLbl, 10, 40, "Attack:");
+            ControlCreate.NewLabel(AttackLbl, 10, 40, "Attack:");
             Controls.Add(AttackLbl);
 
-            Labels.NewLabel(defenseLbl, 10, 70, "Defense:");
+            ControlCreate.NewLabel(defenseLbl, 225, 40, "Defense:");
             Controls.Add(defenseLbl);
             
-            Labels.NewLabel(magicAttackLbl, 10, 100, "Magic Attack:");
+            ControlCreate.NewLabel(magicAttackLbl, 10, 70, "Magic Attack:");
             Controls.Add(magicAttackLbl);
             
-            Labels.NewLabel(magicDefenseLbl, 10, 130, "Magic Defense:");
+            ControlCreate.NewLabel(magicDefenseLbl, 225, 70, "Magic Defense:");
             Controls.Add(magicDefenseLbl);
             
-            Labels.NewLabel(speedLbl, 10, 160, "Speed:");
+            ControlCreate.NewLabel(speedLbl, 10, 100, "Speed:");
             Controls.Add(speedLbl);
 
-            Labels.NewLabel(hitPointsLbl, 10, 190, "Hit Points:");
+            ControlCreate.NewLabel(hitPointsLbl, 225, 100, "Hit Points:");
             Controls.Add(hitPointsLbl);
 
-            Labels.NewLabel(baseDamageLbl, 10, 220, "Base Damage:");
+            ControlCreate.NewLabel(baseDamageLbl, 10, 130, "Base Damage:");
             Controls.Add(baseDamageLbl);
             
-            Labels.NewLabel(criticalFactorLbl, 10, 250, "Critical Factor:");
+            ControlCreate.NewLabel(criticalFactorLbl, 225, 130, "Critical (%):");
             Controls.Add(criticalFactorLbl);
             
-            Labels.NewLabel(scallingStatLbl, 10, 280, "Scalling Status:");
+            ControlCreate.NewLabel(scallingStatLbl, 10, 160, "Scalling Status:");
             Controls.Add(scallingStatLbl);
             
-            Labels.NewLabel(scallingFactorLbl, 10, 310, "Scalling Factor:");
+            ControlCreate.NewLabel(scallingFactorLbl, 225, 160, "Scalling (%):");
             Controls.Add(scallingFactorLbl);
             
-            Labels.NewLabel(pointsLbl, 10, 340, "Points by Level:");
+            ControlCreate.NewLabel(pointsLbl, 10, 190, "Points by Level:");
             Controls.Add(pointsLbl);
             
-            Labels.NewLabel(maxPointsLbl, 10, 370, "Max Points:");
+            ControlCreate.NewLabel(maxPointsLbl, 225, 190, "Max Points:");
             Controls.Add(maxPointsLbl);
             
-            Labels.NewLabel(maxLevelLbl, 10, 400, "Max Level:");
+            ControlCreate.NewLabel(maxLevelLbl, 10, 220, "Max Level:");
             Controls.Add(maxLevelLbl);
             
-            Labels.NewLabel(expBaseLbl, 10, 430, "Exp Base:");
+            ControlCreate.NewLabel(expBaseLbl, 225, 220, "Exp Base:");
             Controls.Add(expBaseLbl);
             
-            Labels.NewLabel(expFactorLbl, 10, 460, "Exp Factor:");
+            ControlCreate.NewLabel(expFactorLbl, 10, 250, "Exp Factor (%):");
             Controls.Add(expFactorLbl);
         }
 
         private void CreatingNums()
         {
-            NumericUpDowns.NewNumeric(attackNum, 100, 36, 1, 0, 32767);
+            ControlCreate.NewNumeric(attackNum, 100, 36, 10, 0, 32767);
             Controls.Add(attackNum);
 
-            NumericUpDowns.NewNumeric(defenseNum, 100, 66, 1, 0, 32767);
+            ControlCreate.NewNumeric(defenseNum, 315, 36, 10, 0, 32767);
             Controls.Add(defenseNum);
 
-            NumericUpDowns.NewNumeric(magicAttackNum, 100, 96, 1, 0, 32767);
+            ControlCreate.NewNumeric(magicAttackNum, 100, 66, 10, 0, 32767);
             Controls.Add(magicAttackNum);
 
-            NumericUpDowns.NewNumeric(magicDefenseNum, 100, 126, 1, 0, 32767);
+            ControlCreate.NewNumeric(magicDefenseNum, 315, 66, 10, 0, 32767);
             Controls.Add(magicDefenseNum);
 
-            NumericUpDowns.NewNumeric(speedNum, 100, 156, 1, 0, 32767);
+            ControlCreate.NewNumeric(speedNum, 100, 96, 10, 0, 32767);
             Controls.Add(speedNum);
 
-            NumericUpDowns.NewNumeric(hitPointsNum, 100, 186, 1, 0, 32767);
+            ControlCreate.NewNumeric(hitPointsNum, 315, 96, 100, 0, 32767);
             Controls.Add(hitPointsNum);
 
-            NumericUpDowns.NewNumeric(baseDamageNum, 100, 216, 1, 0, 32767);
+            ControlCreate.NewNumeric(baseDamageNum, 100, 126, 10, 0, 32767);
             Controls.Add(baseDamageNum);
 
-            NumericUpDowns.NewNumeric(criticalFactorNum, 100, 246, 1, 0, 1, true);
+            ControlCreate.NewNumeric(criticalFactorNum, 315, 126, 2, 0, 5);
             Controls.Add(criticalFactorNum);
 
-            scallingStatCbo.Location = new Point(100, 276);
+            scallingStatCbo.Location = new Point(100, 156);
             scallingStatCbo.Items.Insert(0, "Attack");
             scallingStatCbo.Items.Insert(1, "Defense");
             scallingStatCbo.Items.Insert(2, "Magic Attack");
@@ -155,40 +158,102 @@ namespace IBS
             scallingStatCbo.SelectedIndex = 0;
             Controls.Add(scallingStatCbo);
 
-            NumericUpDowns.NewNumeric(scallingFactorNum, 100, 306, 1, 0, 1, true);
+            ControlCreate.NewNumeric(scallingFactorNum, 315, 156, 100, 0, 100);
             Controls.Add(scallingFactorNum);
 
-            NumericUpDowns.NewNumeric(pointsNum, 100, 336, 1, 0, 32767);
+            ControlCreate.NewNumeric(pointsNum, 100, 186, 1, 0, 32767);
             Controls.Add(pointsNum);
 
-            NumericUpDowns.NewNumeric(maxPointsNum, 100, 366, 1, 0, 32767);
+            ControlCreate.NewNumeric(maxPointsNum, 315, 186, 100, 0, 32767);
             Controls.Add(maxPointsNum);
 
-            NumericUpDowns.NewNumeric(maxLevelNum, 100, 396, 1, 0, 500);
+            ControlCreate.NewNumeric(maxLevelNum, 100, 216, 1, 0, 500);
             Controls.Add(maxLevelNum);
 
-            NumericUpDowns.NewNumeric(expBaseNum, 100, 426, 1, 0, 32767);
+            ControlCreate.NewNumeric(expBaseNum, 315, 216, 100, 0, 32767);
             Controls.Add(expBaseNum);
 
-            NumericUpDowns.NewNumeric(expFactorNum, 100, 456, 1, 0, 1, true);
+            ControlCreate.NewNumeric(expFactorNum, 100, 246, 50, 0, 100);
             Controls.Add(expFactorNum);
         }
 
-        private void CreatingDataGrid()
+        private void CreatingOthers()
         {
-            DataGridViews.NewDataGrid(player, 230, 36, 1110, 440, "PlayerGrid");
-            Controls.Add(player);
+            ControlCreate.NewDataGrid(playerGrid, 450, 36, 885, 230, "PlayerGrid");
+            Controls.Add(playerGrid);
 
-            update.Text = "Update";
-            update.Location = new Point(100, 486);
-            update.MouseClick += Update_MouseClick;
-            Controls.Add(update);
+            ControlCreate.NewButton(updateBtn, 260, 246, 120, 20, "Update!");
+            updateBtn.MouseClick += Update_MouseClick;
+            Controls.Add(updateBtn);
+
+            ControlCreate.NewCheckBox(balancedBox, 10, 280, "Balanced Build");
+            balancedBox.Checked = true;
+            balancedBox.CheckedChanged += BalancedBox_CheckedChanged;
+            Controls.Add(balancedBox);
+
+            ControlCreate.NewCheckBox(strongBox, 125, 280, "Strengh Build");
+            strongBox.Checked = false;
+            strongBox.CheckedChanged += StrongBox_CheckedChanged;
+            Controls.Add(strongBox);
+
+            ControlCreate.NewCheckBox(tankBox, 240, 280, "Tanker Build");
+            tankBox.Checked = false;
+            tankBox.CheckedChanged += TankBox_CheckedChanged;
+            Controls.Add(tankBox);
+        }
+
+        private void BalancedBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (balancedBox.Checked == false && strongBox.Checked == false && tankBox.Checked == false)
+            {
+                balancedBox.Checked = true;
+            }
+            else if (strongBox.Checked == true)
+            {
+                strongBox.Checked = false;
+            }
+            else if (tankBox.Checked == true)
+            {
+                tankBox.Checked = false;
+            }
+        }
+
+        private void StrongBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (balancedBox.Checked == false && strongBox.Checked == false && tankBox.Checked == false)
+            {
+                strongBox.Checked = true;
+            }
+            else if (balancedBox.Checked == true)
+            {
+                balancedBox.Checked = false;
+            }
+            else if (tankBox.Checked == true)
+            {
+                tankBox.Checked = false;
+            }
+        }
+
+        private void TankBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (balancedBox.Checked == false && strongBox.Checked == false && tankBox.Checked == false)
+            {
+                tankBox.Checked = true;
+            }
+            else if (balancedBox.Checked == true)
+            {
+                balancedBox.Checked = false;
+            }
+            else if (strongBox.Checked == true)
+            {
+                strongBox.Checked = false;
+            }
         }
 
         private void Update_MouseClick(object sender, MouseEventArgs e)
         {
             var updating = new Updating();
-            updating.MaxRow((int)maxLevelNum.Value, player);
+            updating.MaxRow((int)maxLevelNum.Value, playerGrid);
         }
     }
 }

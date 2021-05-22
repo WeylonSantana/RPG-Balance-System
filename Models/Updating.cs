@@ -46,24 +46,27 @@ namespace Models
         public void Cells(DataGridView dataGridView)
         {
             int lvl = 0;
-            int hp = (int)IntersectBalanceSystem.hitPointsNum.Value;
+            long baseExp = (long)IntersectBalanceSystem.expBaseNum.Value;
+            double gainExp = (double)IntersectBalanceSystem.expFactorNum.Value;
+            int status = 0;
             int attack = (int)IntersectBalanceSystem.attackNum.Value;
             int defense = (int)IntersectBalanceSystem.defenseNum.Value;
             int magicAttack = (int)IntersectBalanceSystem.magicAttackNum.Value;
             int magicDefense = (int)IntersectBalanceSystem.magicDefenseNum.Value;
             int speed = (int)IntersectBalanceSystem.speedNum.Value;
+            int hp = (int)IntersectBalanceSystem.hitPointsNum.Value;
 
             for (int i = 0; i < dataGridView.Rows.Count; i++)
             {
                 int cell = -1;
-                dataGridView.Rows[i].Cells[cell = cell + 1].Value = lvl + 1;                        //Level
-                dataGridView.Rows[i].Cells[cell = cell + 1].Value = 0;                              //Exp
-                dataGridView.Rows[i].Cells[cell = cell + 1].Value = attack;                         //Attack
-                dataGridView.Rows[i].Cells[cell = cell + 1].Value = defense;                        //Defense
-                dataGridView.Rows[i].Cells[cell = cell + 1].Value = magicAttack;                    //Magic Attack
-                dataGridView.Rows[i].Cells[cell = cell + 1].Value = magicDefense;                   //Magic Defense
-                dataGridView.Rows[i].Cells[cell = cell + 1].Value = speed;                          //Speed
-                dataGridView.Rows[i].Cells[cell = cell + 1].Value = hp;                             //Hit Points
+                dataGridView.Rows[i].Cells[cell = cell + 1].Value = lvl = lvl + 1;                                                          //Level
+                dataGridView.Rows[i].Cells[cell = cell + 1].Value = Calculate.Exp(lvl, baseExp, gainExp);                                   //Exp
+                dataGridView.Rows[i].Cells[cell = cell + 1].Value = Calculate.Status(status, attack, i, "Attack") + status;                 //Attack
+                dataGridView.Rows[i].Cells[cell = cell + 1].Value = Calculate.Status(status, defense, i, "Defense") + status;               //Defense
+                dataGridView.Rows[i].Cells[cell = cell + 1].Value = Calculate.Status(status, magicAttack, i, "MagicAttack") + status;       //Magic Attack
+                dataGridView.Rows[i].Cells[cell = cell + 1].Value = Calculate.Status(status, magicDefense, i, "MagicDefense") + status;     //Magic Defense
+                dataGridView.Rows[i].Cells[cell = cell + 1].Value = Calculate.Status(status, speed, i, "Speed") + status;                   //Speed
+                dataGridView.Rows[i].Cells[cell = cell + 1].Value = hp;                                                                     //Hit Points
             }
         }
     }

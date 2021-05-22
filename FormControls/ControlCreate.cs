@@ -9,8 +9,25 @@ using DarkUI.Controls;
 
 namespace FormControls
 {
-    class DataGridViews
+    class ControlCreate
     {
+        public static DarkLabel NewLabel(DarkLabel label, int x, int y, string name)
+        {
+            label.Text = $"{name}";
+            label.Location = new Point(x, y);
+            label.AutoSize = true;
+            return label;
+        }
+
+        public static DarkNumericUpDown NewNumeric(DarkNumericUpDown numeric, int x, int y, int value, int min, int max)
+        {
+            numeric.Location = new Point(x, y);
+            numeric.Value = value;
+            numeric.Minimum = min;
+            numeric.Maximum = max;
+            return numeric;
+        }
+
         public static DataGridView NewDataGrid(DataGridView datagridview, int x, int y, int width, int height, string name)
         {
             datagridview.BackgroundColor = Color.FromArgb(60, 63, 65);
@@ -50,6 +67,22 @@ namespace FormControls
                 datagridview.Columns.Add("HitPoints", "Hit Points");
             }
             return datagridview;
+        }
+
+        public static DarkButton NewButton(DarkButton button, int x, int y, int width, int height, string text)
+        {
+            button.Text = "Update!";
+            button.Location = new Point(x, y);
+            button.Size = new Size(width, height);
+            return button;
+        }
+
+        public static DarkCheckBox NewCheckBox(DarkCheckBox checkBox, int x, int y, string text)
+        {
+            checkBox.Text = text;
+            checkBox.Location = new Point(x, y);
+            checkBox.AutoSize = true;
+            return checkBox;
         }
     }
 }

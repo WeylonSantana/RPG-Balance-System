@@ -52,15 +52,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormControls\DataGridViews.cs" />
-    <Compile Include="FormControls\Labels.cs" />
-    <Compile Include="FormControls\NumericUpDowns.cs" />
+    <Compile Include="FormControls\ControlCreate.cs" />
     <Compile Include="IntersectBalanceSystem.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="IntersectBalanceSystem.Designer.cs">
       <DependentUpon>IntersectBalanceSystem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Calculate.cs" />
     <Compile Include="Models\Updating.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
