@@ -146,7 +146,7 @@ namespace IBS
             ControlCreate.NewNumeric(baseDamageNum, 100, 126, 10, 0, 32767);
             Controls.Add(baseDamageNum);
 
-            ControlCreate.NewNumeric(criticalFactorNum, 315, 126, 2, 0, 5);
+            ControlCreate.NewNumeric(criticalFactorNum, 315, 126, 2, 1, 5);
             Controls.Add(criticalFactorNum);
 
             scallingStatCbo.Location = new Point(100, 156);
@@ -182,7 +182,7 @@ namespace IBS
             ControlCreate.NewDataGrid(playerGrid, 450, 36, 885, 230, "PlayerGrid");
             Controls.Add(playerGrid);
 
-            ControlCreate.NewButton(updateBtn, 260, 246, 120, 20, "Update!");
+            ControlCreate.NewButton(updateBtn, 330, 275, 120, 25, "Update!");
             updateBtn.MouseClick += Update_MouseClick;
             Controls.Add(updateBtn);
 
@@ -191,12 +191,12 @@ namespace IBS
             balancedBox.CheckedChanged += BalancedBox_CheckedChanged;
             Controls.Add(balancedBox);
 
-            ControlCreate.NewCheckBox(strongBox, 125, 280, "Strengh Build");
+            ControlCreate.NewCheckBox(strongBox, 115, 280, "Strong Build");
             strongBox.Checked = false;
             strongBox.CheckedChanged += StrongBox_CheckedChanged;
             Controls.Add(strongBox);
 
-            ControlCreate.NewCheckBox(tankBox, 240, 280, "Tanker Build");
+            ControlCreate.NewCheckBox(tankBox, 220, 280, "Tanker Build");
             tankBox.Checked = false;
             tankBox.CheckedChanged += TankBox_CheckedChanged;
             Controls.Add(tankBox);

@@ -44,6 +44,7 @@ namespace FormControls
             datagridview.AllowUserToDeleteRows = false;
             datagridview.AllowUserToOrderColumns = false;
             datagridview.AllowUserToResizeColumns = false;
+            datagridview.ColumnHeadersHeight = 32;
             datagridview.ReadOnly = true;
             datagridview.Name = name;
             datagridview.Location = new Point(x, y);
@@ -65,6 +66,10 @@ namespace FormControls
                 datagridview.Columns.Add("MagicDefense", "Magic Defense");
                 datagridview.Columns.Add("Speed", "Speed");
                 datagridview.Columns.Add("HitPoints", "Hit Points");
+                datagridview.Columns.Add("DamageTrue", "Damage True");
+                datagridview.Columns.Add("CritDamageTrue", "Critical Damage True");
+                datagridview.Columns.Add("DamageReal", "Damage Real");
+                datagridview.Columns.Add("CritDamageReal", "Critical Damage Real");
             }
             return datagridview;
         }
