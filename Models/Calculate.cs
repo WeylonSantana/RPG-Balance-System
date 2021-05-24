@@ -11,8 +11,14 @@ namespace Models
     {
         public static long Exp(int level, long baseExp, double gain)
         {
-            gain = ((double)IntersectBalanceSystem.expFactorNum.Value / 100) + 1;
+            gain = (gain / 100) + 1;
             return (long)Math.Floor(baseExp * Math.Pow(gain, level - 1));
+        }
+
+        public static int Exponential(double valueBase, double valueIncrease)
+        {
+            valueIncrease = (valueIncrease / 100) + 1;
+            return (int)Math.Floor(valueBase * valueIncrease);
         }
 
         public static int Status(int status, int stat, int row, string prop)
@@ -101,13 +107,21 @@ namespace Models
             return status;
         }
 
-        public static int Damage(string prop, int atk, double def, int matk, int mdef, int spd, double factorMin, double factorMax)
+        public static int Damage(string prop, int atk, double def, int matk, int mdef, int spd, double factorMin, double factorMax, string datagrid)
         {
             int value = 0;
-            int damageBase = (int)IntersectBalanceSystem.baseDamageNum.Value;
             double scalling = (double)IntersectBalanceSystem.scallingFactorNum.Value / 100;
             double critical = (double)IntersectBalanceSystem.criticalFactorNum.Value;
             double defenseFactor = (100 / (100 + def));
+            int damageBase = 0;
+            if (datagrid == "player")
+            {
+                damageBase = (int)IntersectBalanceSystem.baseDamageNum.Value;
+
+            }else if (datagrid == "monster")
+            {
+                damageBase = (int)IntersectBalanceSystem.M_baseDamageNum.Value;
+            }
             switch (IntersectBalanceSystem.scallingStatCbo.SelectedIndex)
             {
                 case 0:

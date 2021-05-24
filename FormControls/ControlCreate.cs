@@ -43,8 +43,8 @@ namespace FormControls
             datagridview.AllowUserToResizeRows = false;
             datagridview.AllowUserToDeleteRows = false;
             datagridview.AllowUserToOrderColumns = false;
-            datagridview.AllowUserToResizeColumns = false;
-            datagridview.ColumnHeadersHeight = 32;
+            datagridview.AllowUserToResizeColumns = true;
+            datagridview.ColumnHeadersHeight = 40;
             datagridview.ReadOnly = true;
             datagridview.Name = name;
             datagridview.Location = new Point(x, y);
@@ -60,23 +60,52 @@ namespace FormControls
             {
                 datagridview.Columns.Add("Level", "Level");
                 datagridview.Columns.Add("Exp", "Exp");
+                datagridview.Columns.Add("HitPoints", "Hit Points");
                 datagridview.Columns.Add("Attack", "Attack");
                 datagridview.Columns.Add("Defense", "Defense");
                 datagridview.Columns.Add("MagicAttack", "Magic Attack");
                 datagridview.Columns.Add("MagicDefense", "Magic Defense");
                 datagridview.Columns.Add("Speed", "Speed");
-                datagridview.Columns.Add("HitPoints", "Hit Points");
                 datagridview.Columns.Add("DamageTrue", "Damage True");
                 datagridview.Columns.Add("CritDamageTrue", "Critical Damage True");
                 datagridview.Columns.Add("DamageReal", "Damage Real");
                 datagridview.Columns.Add("CritDamageReal", "Critical Damage Real");
             }
+            else if(name == "MonsterGrid")
+            {
+                datagridview.Columns.Add("Level", "Level");
+                datagridview.Columns.Add("HitPoints", "Hit Points");
+                datagridview.Columns.Add("Attack", "Attack");
+                datagridview.Columns.Add("Defense", "Defense");
+                datagridview.Columns.Add("MagicAttack", "Magic Attack");
+                datagridview.Columns.Add("MagicDefense", "Magic Defense");
+                datagridview.Columns.Add("Speed", "Speed");
+                datagridview.Columns.Add("DamageTrue", "Damage True");
+                datagridview.Columns.Add("CritDamageTrue", "Critical Damage True");
+                datagridview.Columns.Add("DamageReal", "Damage Real");
+                datagridview.Columns.Add("CritDamageReal", "Critical Damage Real");
+                datagridview.Hide();
+            }
             return datagridview;
+        }
+
+        public static DarkComboBox NewComboBox(DarkComboBox darkComboBox, int x, int y)
+        {
+            darkComboBox.Location = new Point(x, y);
+
+            darkComboBox.Items.Insert(0, "Attack");
+            darkComboBox.Items.Insert(1, "Defense");
+            darkComboBox.Items.Insert(2, "Magic Attack");
+            darkComboBox.Items.Insert(3, "Magic Defense");
+            darkComboBox.Items.Insert(4, "Speed");
+            darkComboBox.SelectedIndex = 0;
+
+            return darkComboBox;
         }
 
         public static DarkButton NewButton(DarkButton button, int x, int y, int width, int height, string text)
         {
-            button.Text = "Update!";
+            button.Text = text;
             button.Location = new Point(x, y);
             button.Size = new Size(width, height);
             return button;
