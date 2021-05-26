@@ -68,7 +68,7 @@ namespace Models
             {
                 //Updating player grid values
                 IntersectBalanceSystem.dgvPlyr.Rows[i].Cells[0].Value = lvl = (lvl + 1);                                 //Level
-                IntersectBalanceSystem.dgvPlyr.Rows[i].Cells[1].Value = (int)Calculate.Exp(lvl, plyrExpBase, plyrExpFac);     //Exp
+                IntersectBalanceSystem.dgvPlyr.Rows[i].Cells[1].Value = Calculate.Exp(lvl, plyrExpBase, plyrExpFac);     //Exp
                 IntersectBalanceSystem.dgvPlyr.Rows[i].Cells[2].Value = (int)Calculate.Exp(lvl, plyrHpBase, plyrHpFac);       //Hit Points
                 IntersectBalanceSystem.dgvPlyr.Rows[i].Cells[3].Value = Calculate.Points("0", plyrAtk, i);               //Attack
                 IntersectBalanceSystem.dgvPlyr.Rows[i].Cells[4].Value = Calculate.Points("1", plyrDef, i);               //Defense
