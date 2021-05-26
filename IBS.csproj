@@ -52,7 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormControls\ControlCreate.cs" />
+    <Compile Include="Models\ControlCreate.cs" />
     <Compile Include="IntersectBalanceSystem.cs">
       <SubType>Form</SubType>
     </Compile>

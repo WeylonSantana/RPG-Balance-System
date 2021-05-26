@@ -11,268 +11,147 @@ namespace Models
     {
         public static long Exp(int level, long baseExp, double gain)
         {
-            gain = (gain / 100) + 1;
-            return (long)Math.Floor(baseExp * Math.Pow(gain, level - 1));
+            long value = (long)Math.Floor(baseExp * Math.Pow(gain, level - 1));
+            return value;
         }
 
-        public static int Exponential(double valueBase, double valueIncrease)
+        /// <summary>
+        /// This function is for assigning points in status
+        /// </summary>
+        /// <param name="Param"></param>
+        /// <param name="StatusBase"></param>
+        /// <param name="row"></param>
+        /// <returns></returns>
+        public static int Points(string Param, int StatusBase, int row)
         {
-            valueIncrease = (valueIncrease / 100) + 1;
-            return (int)Math.Floor(valueBase * valueIncrease);
-        }
-
-        public static int Status(int status, int stat, int row, string prop)
-        {
-            int points = (int)IntersectBalanceSystem.pointsNum.Value;
-            int maxPoints = (int)IntersectBalanceSystem.maxPointsNum.Value;
-            int r = ((points / 5) * row);
-
-            if (IntersectBalanceSystem.balancedBox.Checked == true)
+            int points = 0;
+            if(IntersectBalanceSystem.rdBalanced.Checked == true)
             {
-                status = stat + r;
+                points = ((int)IntersectBalanceSystem.nudPlyrPoints.Value / 5) * row;
+                StatusBase = StatusBase + points;
             }
-
-            if(IntersectBalanceSystem.strongBox.Checked == true)
+            else if(IntersectBalanceSystem.rdStrong.Checked == true)
             {
-                switch (IntersectBalanceSystem.scallingStatCbo.SelectedIndex)
+                points = ((int)IntersectBalanceSystem.nudPlyrPoints.Value * row);
+                if (IntersectBalanceSystem.cboPlyrScalStat.SelectedIndex == 0 && Param == "0")
                 {
-                    case 0:
-                        if (prop == "Attack")
-                        {
-                            status = stat + (r * 5);
-                        }
-                        else
-                        {
-                            status = stat;
-                        }
-                        break;
-                    case 1:
-                        if (prop == "Defense")
-                        {
-                            status = stat + (r * 5);
-                        }
-                        else
-                        {
-                            status = stat;
-                        }
-                        break;
-                    case 2:
-                        if (prop == "MagicAttack")
-                        {
-                            status = stat + (r * 5);
-                        }
-                        else
-                        {
-                            status = stat;
-                        }
-                        break;
-                    case 3:
-                        if (prop == "MagicDefense")
-                        {
-                            status = stat + (r * 5);
-                        }
-                        else
-                        {
-                            status = stat;
-                        }
-                        break;
-                    case 4:
-                        if (prop == "Speed")
-                        {
-                            status = stat + (r * 5);
-                        }
-                        else
-                        {
-                            status = stat;
-                        }
-                        break;
+                    StatusBase = StatusBase + points;
+                }
+                if(IntersectBalanceSystem.cboPlyrScalStat.SelectedIndex == 1 && Param == "1")
+                {
+                    StatusBase = StatusBase + points;
+                }
+                if(IntersectBalanceSystem.cboPlyrScalStat.SelectedIndex == 2 && Param == "2")
+                {
+                    StatusBase = StatusBase + points;
+                }
+                if(IntersectBalanceSystem.cboPlyrScalStat.SelectedIndex == 3 && Param == "3")
+                {
+                    StatusBase = StatusBase + points;
+                }
+                if(IntersectBalanceSystem.cboPlyrScalStat.SelectedIndex == 4 && Param == "4")
+                {
+                    StatusBase = StatusBase + points;
                 }
             }
-
-            if (IntersectBalanceSystem.tankBox.Checked == true)
+            else if(IntersectBalanceSystem.rdTanker.Checked == true)
             {
-                if (prop == "Defense")
+                if (Param == "1")
                 {
-                    status = stat + (r * 5);
-                }else
-                {
-                    status = stat;
+                    points = ((int)IntersectBalanceSystem.nudPlyrPoints.Value * row);
+                    StatusBase = StatusBase + points;
                 }
             }
-
-            if (status > maxPoints)
+            if (StatusBase > IntersectBalanceSystem.nudPlyrMaxPoints.Value)
             {
-                status = maxPoints;
+                StatusBase = (int)IntersectBalanceSystem.nudPlyrMaxPoints.Value;
             }
-            return status;
+            return StatusBase;
         }
 
-        public static int Damage(string prop, int atk, double def, int matk, int mdef, int spd, double factorMin, double factorMax, string datagrid)
+        /// <summary>
+        /// This function will perform the damage calculation.
+        /// </summary>
+        /// <param name="Param">0 - True Damage, 1 - True Crit Damage, 2 - Real Damage, 3 - Real Crit Damage</param>
+        /// <param name="GridName">Grid Name</param>
+        /// <param name="Row">Grid's Row</param>
+        /// <param name="BaseDamage">Base Damage</param>
+        /// <param name="ScaleFactor">Scale Factor</param>
+        /// <param name="Factor">Place a value to multiply the damage to generate the minimum and maximum damages.</param>
+        /// <param name="Critical">Critical Value</param>
+        /// <returns>Final Damage</returns>
+        public static int Formula(int Param, string GridName, int Row, int BaseDamage, double ScaleFactor, double Factor, int Critical)
         {
             int value = 0;
-            double scalling = (double)IntersectBalanceSystem.scallingFactorNum.Value / 100;
-            double critical = (double)IntersectBalanceSystem.criticalFactorNum.Value;
-            double defenseFactor = (100 / (100 + def));
-            int damageBase = 0;
-            if (datagrid == "player")
-            {
-                damageBase = (int)IntersectBalanceSystem.baseDamageNum.Value;
+            double ScalingStat = 0;
+            int victmDef = 0;
 
-            }else if (datagrid == "monster")
+            if(GridName == IntersectBalanceSystem.dgvPlyr.Name)
             {
-                damageBase = (int)IntersectBalanceSystem.M_baseDamageNum.Value;
+                victmDef = (int)IntersectBalanceSystem.dgvEny.Rows[Row].Cells[3].Value;
+                switch (IntersectBalanceSystem.cboPlyrScalStat.SelectedIndex)
+                {
+                    case 0:
+                        ScalingStat = (int)IntersectBalanceSystem.dgvPlyr.Rows[Row].Cells[3].Value;
+                        break;
+                    case 1:
+                        ScalingStat = (int)IntersectBalanceSystem.dgvPlyr.Rows[Row].Cells[4].Value;
+                        break;
+                    case 2:
+                        ScalingStat = (int)IntersectBalanceSystem.dgvPlyr.Rows[Row].Cells[5].Value;
+                        break;
+                    case 3:
+                        ScalingStat = (int)IntersectBalanceSystem.dgvPlyr.Rows[Row].Cells[6].Value;
+                        break;
+                    case 4:
+                        ScalingStat = (int)IntersectBalanceSystem.dgvPlyr.Rows[Row].Cells[7].Value;
+                        break;
+                }
             }
-            switch (IntersectBalanceSystem.scallingStatCbo.SelectedIndex)
+            else
             {
+                victmDef = (int)IntersectBalanceSystem.dgvPlyr.Rows[Row].Cells[4].Value;
+                switch (IntersectBalanceSystem.cboEnyScalStat.SelectedIndex)
+                {
+                    case 0:
+                        ScalingStat = (int)IntersectBalanceSystem.dgvEny.Rows[Row].Cells[2].Value;
+                        break;
+                    case 1:
+                        ScalingStat = (int)IntersectBalanceSystem.dgvEny.Rows[Row].Cells[3].Value;
+                        break;
+                    case 2:
+                        ScalingStat = (int)IntersectBalanceSystem.dgvEny.Rows[Row].Cells[4].Value;
+                        break;
+                    case 3:
+                        ScalingStat = (int)IntersectBalanceSystem.dgvEny.Rows[Row].Cells[5].Value;
+                        break;
+                    case 4:
+                        ScalingStat = (int)IntersectBalanceSystem.dgvEny.Rows[Row].Cells[6].Value;
+                        break;
+                }
+            }
+
+            //Change your combat formula here
+            double dmg = (BaseDamage + (ScalingStat * ScaleFactor));
+            double defFactor = (100 / (100 + (double)victmDef));
+
+            switch (Param)
+            {
+                //True damage min - max
                 case 0:
-                    int dmg = (int)Math.Floor(damageBase + (atk * scalling));
-                    switch (prop)
-                    {
-                        case "Dmg0":
-                            value = (int)(dmg * factorMin);
-                            break;
-                        case "Dmg1":
-                            value = (int)(dmg * factorMax);
-                            break;
-                        case "Dmg2":
-                            value = (int)(dmg * critical * factorMin);
-                            break;
-                        case "Dmg3":
-                            value = (int)(dmg * critical * factorMax);
-                            break;
-                        case "Dmg4":
-                            value = (int)((dmg * factorMin) * defenseFactor);
-                            break;
-                        case "Dmg5":
-                            value = (int)((dmg * factorMax) * defenseFactor);
-                            break;
-                        case "Dmg6":
-                            value = (int)((dmg * critical * factorMin) * defenseFactor);
-                            break;
-                        case "Dmg7":
-                            value = (int)((dmg * critical * factorMax) * defenseFactor);
-                            break;
-                    }
+                    value = (int)Math.Floor((dmg * Factor));
                     break;
+                //True critical damage min - max
                 case 1:
-                    dmg = (int)Math.Floor(damageBase + (def * scalling));
-                    switch (prop)
-                    {
-                        case "Dmg0":
-                            value = (int)(dmg * factorMin);
-                            break;
-                        case "Dmg1":
-                            value = (int)(dmg * factorMax);
-                            break;
-                        case "Dmg2":
-                            value = (int)(dmg * critical * factorMin);
-                            break;
-                        case "Dmg3":
-                            value = (int)(dmg * critical * factorMax);
-                            break;
-                        case "Dmg4":
-                            value = (int)((dmg * factorMin) * defenseFactor);
-                            break;
-                        case "Dmg5":
-                            value = (int)((dmg * factorMax) * defenseFactor);
-                            break;
-                        case "Dmg6":
-                            value = (int)((dmg * critical * factorMin) * defenseFactor);
-                            break;
-                        case "Dmg7":
-                            value = (int)((dmg * critical * factorMax) * defenseFactor);
-                            break;
-                    }
+                    value = (int)Math.Floor((dmg * Critical * Factor));
                     break;
+                //Real damage min - max
                 case 2:
-                    dmg = (int)Math.Floor(damageBase + (matk * scalling));
-                    switch (prop)
-                    {
-                        case "Dmg0":
-                            value = (int)(dmg * factorMin);
-                            break;
-                        case "Dmg1":
-                            value = (int)(dmg * factorMax);
-                            break;
-                        case "Dmg2":
-                            value = (int)(dmg * critical * factorMin);
-                            break;
-                        case "Dmg3":
-                            value = (int)(dmg * critical * factorMax);
-                            break;
-                        case "Dmg4":
-                            value = (int)((dmg * factorMin) * defenseFactor);
-                            break;
-                        case "Dmg5":
-                            value = (int)((dmg * factorMax) * defenseFactor);
-                            break;
-                        case "Dmg6":
-                            value = (int)((dmg * critical * factorMin) * defenseFactor);
-                            break;
-                        case "Dmg7":
-                            value = (int)((dmg * critical * factorMax) * defenseFactor);
-                            break;
-                    }
+                    value = (int)(Math.Floor(((dmg * Factor) * defFactor)));
                     break;
+                //Real critical damage min - max
                 case 3:
-                    dmg = (int)Math.Floor(damageBase + (mdef * scalling));
-                    switch (prop)
-                    {
-                        case "Dmg0":
-                            value = (int)(dmg * factorMin);
-                            break;
-                        case "Dmg1":
-                            value = (int)(dmg * factorMax);
-                            break;
-                        case "Dmg2":
-                            value = (int)(dmg * critical * factorMin);
-                            break;
-                        case "Dmg3":
-                            value = (int)(dmg * critical * factorMax);
-                            break;
-                        case "Dmg4":
-                            value = (int)((dmg * factorMin) * defenseFactor);
-                            break;
-                        case "Dmg5":
-                            value = (int)((dmg * factorMax) * defenseFactor);
-                            break;
-                        case "Dmg6":
-                            value = (int)((dmg * critical * factorMin) * defenseFactor);
-                            break;
-                        case "Dmg7":
-                            value = (int)((dmg * critical * factorMax) * defenseFactor);
-                            break;
-                    }
-                    break;
-                case 4:
-                    dmg = (int)Math.Floor(damageBase + (spd * scalling));
-                    switch (prop)
-                    {
-                        case "Dmg0":
-                            value = (int)(dmg * factorMin);
-                            break;
-                        case "Dmg1":
-                            value = (int)(dmg * factorMax);
-                            break;
-                        case "Dmg2":
-                            value = (int)(dmg * critical * factorMin);
-                            break;
-                        case "Dmg3":
-                            value = (int)(dmg * critical * factorMax);
-                            break;
-                        case "Dmg4":
-                            value = (int)((dmg * factorMin) * defenseFactor);
-                            break;
-                        case "Dmg5":
-                            value = (int)((dmg * factorMax) * defenseFactor);
-                            break;
-                        case "Dmg6":
-                            value = (int)((dmg * critical * factorMin) * defenseFactor);
-                            break;
-                        case "Dmg7":
-                            value = (int)((dmg * critical * factorMax) * defenseFactor);
-                            break;
-                    }
+                    value = (int)(Math.Floor(((dmg * Critical * Factor) * defFactor)));
                     break;
             }
             return value;
