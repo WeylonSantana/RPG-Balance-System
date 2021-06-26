@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DarkUI;
 using DarkUI.Controls;
-using Models;
 using Microsoft.Office.Interop.Excel;
 using System.IO;
 
@@ -22,24 +21,221 @@ namespace IBS
             InitializeComponent();
         }
 
-        Updating update = new Updating();
+        IBS.Classes.Updating update = new IBS.Classes.Updating();
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Setup();
+            UpdateMaxRow();
+        }
+
+        private void Setup()
+        {
+            Classes.Properties.PlyrLevel = (int)nudPlyrMaxLvl.Value;
+            Classes.Properties.PlyrAttack = (int)nudPlyrAtk.Value;
+            Classes.Properties.PlyrDefese = (int)nudPlyrDef.Value;
+            Classes.Properties.PlyrMagicAttack = (int)nudPlyrMAtk.Value;
+            Classes.Properties.PlyrMagicDefense = (int)nudPlyrMDef.Value;
+            Classes.Properties.PlyrSpeed = (int)nudPlyrSpd.Value;
+            Classes.Properties.PlyrHpBase = (int)nudPlyrHpBase.Value;
+            Classes.Properties.PlyrHpFac = ((double)nudPlyrHpInc.Value / 100) + 1;
+            Classes.Properties.PlyrExpBase = (int)nudPlyrExpBase.Value;
+            Classes.Properties.PlyrExpFac = ((double)nudPlyrExpFac.Value / 100) + 1;
+            Classes.Properties.PlyrPoints = (int)nudPlyrPoints.Value;
+            Classes.Properties.PlyrMaxPoints = (int)nudPlyrMaxPoints.Value;
+            Classes.Properties.PlyrBaseDmg = (int)nudPlyrBaseDmg.Value;
+            Classes.Properties.PlyrScalingFac = (double)nudPlyrScalFac.Value / 100;
+            Classes.Properties.PlyrCriticalFac = (double)nudPlyrCrit.Value;
+            Classes.Properties.EnyAttack = ((double)nudEnyAtk.Value / 100) + 1;
+            Classes.Properties.EnyDefese = ((double)nudEnyDef.Value / 100) + 1;
+            Classes.Properties.EnyMagicAttack = ((double)nudEnyMAtk.Value / 100) + 1;
+            Classes.Properties.EnyMagicDefense = ((double)nudEnyMDef.Value / 100) + 1;
+            Classes.Properties.EnySpeed = ((double)nudEnySpd.Value / 100) + 1;
+            Classes.Properties.EnyHpFac = ((double)nudEnyHp.Value / 100) + 1;
+            Classes.Properties.EnyBaseDmg = (int)nudEnyBaseDmg.Value;
+            Classes.Properties.EnyScalingFac = (double)nudEnyScalFac.Value / 100;
+            Classes.Properties.EnyCriticalFac = (double)nudEnyCrit.Value;
+            Classes.Properties.Balanced = true;
             cboPlyrScalStat.SelectedIndex = 0;
             cboEnyScalStat.SelectedIndex = 0;
             rdBalanced.Checked = true;
             dgvEny.Hide();
             dgvSummary.Hide();
-            ControlCreate.NewDataGrid();
-            update.MaxRow();
-            //update.MaxRow((int)nudPlyrMaxLvl.Value, dgvEny);
-            //update.MaxRow((int)nudPlyrMaxLvl.Value, dgvSummary);
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            update.MaxRow();
+            Classes.Properties.PlyrScalingStat = cboPlyrScalStat.SelectedIndex;
+            Classes.Properties.EnyScalingStat = cboEnyScalStat.SelectedIndex;
+            if (rdBalanced.Checked == true)
+            {
+                Classes.Properties.Balanced = true;
+                Classes.Properties.Strong = false;
+                Classes.Properties.Tanker = false;
+
+            }else if (rdStrong.Checked == true)
+            {
+                Classes.Properties.Balanced = false;
+                Classes.Properties.Strong = true;
+                Classes.Properties.Tanker = false;
+            }
+            else if (rdTanker.Checked == true)
+            {
+                Classes.Properties.Balanced = false;
+                Classes.Properties.Strong = false;
+                Classes.Properties.Tanker = true;
+            }
+            UpdateMaxRow();
+        }
+
+        public void UpdateMaxRow()
+        {
+            int end = Classes.Properties.PlyrLevel;
+            int row = dgvPlyr.Rows.Count;
+            if (row < end)
+            {
+                for (int i = row; i < end; i++)
+                {
+                    dgvPlyr.Rows.Add();
+                    dgvEny.Rows.Add();
+                    dgvSummary.Rows.Add();
+                }
+            }
+            else if (row > end)
+            {
+                for (int i = row; i > end; i--)
+                {
+                    DataGridViewRow r = dgvPlyr.Rows[end];
+                    dgvPlyr.Rows.Remove(r);
+                    r = dgvEny.Rows[end];
+                    dgvEny.Rows.Remove(r);
+                    r = dgvSummary.Rows[end];
+                    dgvSummary.Rows.Remove(r);
+                }
+            }
+            Classes.Updating.UpdateCells(dgvPlyr, dgvPlyr.RowCount);
+            Classes.Updating.UpdateCells(dgvEny, dgvPlyr, dgvPlyr.RowCount);
+            Classes.Updating.UpdateCells(dgvSummary, dgvPlyr, dgvEny, dgvPlyr.RowCount);
+        }
+
+        private void nudPlyrMaxLvl_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.PlyrLevel = (int)nudPlyrMaxLvl.Value;
+        }
+
+        private void nudPlyrAtk_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.PlyrAttack = (int)nudPlyrAtk.Value;
+        }
+
+        private void nudPlyrDef_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.PlyrDefese = (int)nudPlyrDef.Value;
+        }
+
+        private void nudPlyrMAtk_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.PlyrMagicAttack = (int)nudPlyrMAtk.Value;
+        }
+
+        private void nudPlyrMDef_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.PlyrMagicDefense = (int)nudPlyrMDef.Value;
+        }
+
+        private void nudPlyrSpd_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.PlyrSpeed = (int)nudPlyrSpd.Value;
+        }
+
+        private void nudPlyrHpBase_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.PlyrHpBase = (int)nudPlyrHpBase.Value;
+        }
+
+        private void nudPlyrHpInc_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.PlyrHpFac = (((double)nudPlyrHpInc.Value / 100) + 1);
+        }
+
+        private void nudPlyrExpBase_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.PlyrExpBase = (int)nudPlyrExpBase.Value;
+        }
+
+        private void nudPlyrExpFac_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.PlyrExpFac = (((double)nudPlyrExpFac.Value / 100) + 1);
+        }
+
+        private void nudPlyrPoints_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.PlyrPoints = (int)nudPlyrPoints.Value;
+        }
+
+        private void nudPlyrMaxPoints_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.PlyrMaxPoints = (int)nudPlyrMaxPoints.Value;
+        }
+
+        private void nudPlyrBaseDmg_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.PlyrBaseDmg = (int)nudPlyrBaseDmg.Value;
+        }
+
+        private void nudPlyrScalFac_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.PlyrScalingFac = ((double)nudPlyrScalFac.Value / 100);
+        }
+
+        private void nudPlyrCrit_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.PlyrCriticalFac = (double)nudPlyrCrit.Value;
+        }
+
+        private void nudEnyAtk_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.EnyAttack = (((double)nudEnyAtk.Value / 100) + 1);
+        }
+
+        private void nudEnyDef_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.EnyDefese = (((double)nudEnyDef.Value / 100) + 1);
+        }
+
+        private void nudEnyMAtk_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.EnyMagicAttack = (((double)nudEnyMAtk.Value / 100) + 1);
+        }
+
+        private void nudEnyMDef_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.EnyMagicDefense = (((double)nudEnyMDef.Value / 100) + 1);
+        }
+
+        private void nudEnySpd_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.EnySpeed = (((double)nudEnySpd.Value / 100) + 1);
+        }
+
+        private void nudEnyHp_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.EnyHpFac = (((double)nudEnyHp.Value / 100) + 1);
+        }
+
+        private void nudEnyBaseDmg_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.EnyBaseDmg = (int)nudEnyBaseDmg.Value;
+        }
+
+        private void nudEnyScalFac_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.EnyScalingFac = (double)nudEnyScalFac.Value / 100;
+        }
+
+        private void nudEnyCrit_ValueChanged(object sender, EventArgs e)
+        {
+            Classes.Properties.EnyCriticalFac = (double)nudEnyCrit.Value;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -169,8 +365,9 @@ namespace IBS
             {
                 dgvEny.Hide();
                 dgvSummary.Hide();
-                dgvPlyr.Show();
             }
+
+            dgvPlyr.Show();
         }
 
         private void btnEnyGrid_Click(object sender, EventArgs e)
@@ -179,8 +376,9 @@ namespace IBS
             {
                 dgvPlyr.Hide();
                 dgvSummary.Hide();
-                dgvEny.Show();
             }
+
+            dgvEny.Show();
         }
 
         private void btnSummaryGrid_Click(object sender, EventArgs e)
@@ -189,8 +387,9 @@ namespace IBS
             {
                 dgvPlyr.Hide();
                 dgvEny.Hide();
-                dgvSummary.Show();
             }
+
+            dgvSummary.Show();
         }
     }
 }
