@@ -1,7 +1,7 @@
 ﻿
 namespace IBS
 {
-    partial class IntersectBalanceSystem
+    partial class RPGBalanceSystem
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -29,9 +29,10 @@ namespace IBS
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RPGBalanceSystem));
             this.nudPlyrMaxLvl = new DarkUI.Controls.DarkNumericUpDown();
             this.nudPlyrAtk = new DarkUI.Controls.DarkNumericUpDown();
             this.nudPlyrDef = new DarkUI.Controls.DarkNumericUpDown();
@@ -129,6 +130,16 @@ namespace IBS
             this.EnyCritRealDmg = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnyHitsTrue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnyHitsReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gbFormulas = new DarkUI.Controls.DarkGroupBox();
+            this.btnInformation = new DarkUI.Controls.DarkButton();
+            this.tbMaxReal = new DarkUI.Controls.DarkTextBox();
+            this.tbMinReal = new DarkUI.Controls.DarkTextBox();
+            this.tbMaxTrue = new DarkUI.Controls.DarkTextBox();
+            this.tbMinTrue = new DarkUI.Controls.DarkTextBox();
+            this.lblMaxReal = new DarkUI.Controls.DarkLabel();
+            this.lblMinReal = new DarkUI.Controls.DarkLabel();
+            this.lblMaxTrue = new DarkUI.Controls.DarkLabel();
+            this.lblMinTrue = new DarkUI.Controls.DarkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.nudPlyrMaxLvl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPlyrAtk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPlyrDef)).BeginInit();
@@ -160,6 +171,7 @@ namespace IBS
             this.gbFunctions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEny)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSummary)).BeginInit();
+            this.gbFormulas.SuspendLayout();
             this.SuspendLayout();
             // 
             // nudPlyrMaxLvl
@@ -174,7 +186,7 @@ namespace IBS
             this.nudPlyrMaxLvl.Size = new System.Drawing.Size(100, 20);
             this.nudPlyrMaxLvl.TabIndex = 17;
             this.nudPlyrMaxLvl.Value = new decimal(new int[] {
-            1,
+            100,
             0,
             0,
             0});
@@ -517,6 +529,11 @@ namespace IBS
             this.nudPlyrPoints.Name = "nudPlyrPoints";
             this.nudPlyrPoints.Size = new System.Drawing.Size(100, 20);
             this.nudPlyrPoints.TabIndex = 27;
+            this.nudPlyrPoints.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             this.nudPlyrPoints.ValueChanged += new System.EventHandler(this.nudPlyrPoints_ValueChanged);
             // 
             // nudPlyrMaxPoints
@@ -589,7 +606,7 @@ namespace IBS
             this.nudPlyrHpBase.Size = new System.Drawing.Size(100, 20);
             this.nudPlyrHpBase.TabIndex = 23;
             this.nudPlyrHpBase.Value = new decimal(new int[] {
-            100,
+            50,
             0,
             0,
             0});
@@ -630,20 +647,20 @@ namespace IBS
             this.PlyrMagicDefense,
             this.PlyrSpeed,
             this.PlyrExp});
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPlyr.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPlyr.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPlyr.GridColor = System.Drawing.Color.Black;
             this.dgvPlyr.Location = new System.Drawing.Point(485, 12);
             this.dgvPlyr.Name = "dgvPlyr";
             this.dgvPlyr.ReadOnly = true;
             this.dgvPlyr.Size = new System.Drawing.Size(853, 705);
-            this.dgvPlyr.TabIndex = 4;
+            this.dgvPlyr.TabIndex = 5;
             // 
             // PlyrLevel
             // 
@@ -1188,20 +1205,20 @@ namespace IBS
             this.EnyMagicAttack,
             this.EnyMagicDefense,
             this.EnySpeed});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvEny.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvEny.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvEny.GridColor = System.Drawing.Color.Black;
             this.dgvEny.Location = new System.Drawing.Point(485, 12);
             this.dgvEny.Name = "dgvEny";
             this.dgvEny.ReadOnly = true;
             this.dgvEny.Size = new System.Drawing.Size(853, 705);
-            this.dgvEny.TabIndex = 5;
+            this.dgvEny.TabIndex = 6;
             // 
             // EnyLevel
             // 
@@ -1268,20 +1285,20 @@ namespace IBS
             this.EnyCritRealDmg,
             this.EnyHitsTrue,
             this.EnyHitsReal});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSummary.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(63)))), ((int)(((byte)(65)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSummary.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSummary.GridColor = System.Drawing.Color.Black;
             this.dgvSummary.Location = new System.Drawing.Point(485, 12);
             this.dgvSummary.Name = "dgvSummary";
             this.dgvSummary.ReadOnly = true;
             this.dgvSummary.Size = new System.Drawing.Size(853, 705);
-            this.dgvSummary.TabIndex = 6;
+            this.dgvSummary.TabIndex = 7;
             // 
             // PlayerLevel
             // 
@@ -1369,12 +1386,128 @@ namespace IBS
             this.EnyHitsReal.Name = "EnyHitsReal";
             this.EnyHitsReal.ReadOnly = true;
             // 
-            // IntersectBalanceSystem
+            // gbFormulas
+            // 
+            this.gbFormulas.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.gbFormulas.Controls.Add(this.btnInformation);
+            this.gbFormulas.Controls.Add(this.tbMaxReal);
+            this.gbFormulas.Controls.Add(this.tbMinReal);
+            this.gbFormulas.Controls.Add(this.tbMaxTrue);
+            this.gbFormulas.Controls.Add(this.tbMinTrue);
+            this.gbFormulas.Controls.Add(this.lblMaxReal);
+            this.gbFormulas.Controls.Add(this.lblMinReal);
+            this.gbFormulas.Controls.Add(this.lblMaxTrue);
+            this.gbFormulas.Controls.Add(this.lblMinTrue);
+            this.gbFormulas.Location = new System.Drawing.Point(12, 562);
+            this.gbFormulas.Name = "gbFormulas";
+            this.gbFormulas.Size = new System.Drawing.Size(467, 155);
+            this.gbFormulas.TabIndex = 4;
+            this.gbFormulas.TabStop = false;
+            this.gbFormulas.Text = "Formulas:";
+            // 
+            // btnInformation
+            // 
+            this.btnInformation.Location = new System.Drawing.Point(384, 123);
+            this.btnInformation.Name = "btnInformation";
+            this.btnInformation.Padding = new System.Windows.Forms.Padding(5);
+            this.btnInformation.Size = new System.Drawing.Size(75, 23);
+            this.btnInformation.TabIndex = 8;
+            this.btnInformation.Text = "Information";
+            this.btnInformation.Click += new System.EventHandler(this.btnInformation_Click);
+            // 
+            // tbMaxReal
+            // 
+            this.tbMaxReal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.tbMaxReal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbMaxReal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.tbMaxReal.Location = new System.Drawing.Point(107, 97);
+            this.tbMaxReal.Name = "tbMaxReal";
+            this.tbMaxReal.Size = new System.Drawing.Size(352, 20);
+            this.tbMaxReal.TabIndex = 7;
+            this.tbMaxReal.Text = "(((BaseDamage + (ScalingStat * ScaleFactor))) * 1.025) * (100 / (100 + V_Defense)" +
+    ")";
+            // 
+            // tbMinReal
+            // 
+            this.tbMinReal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.tbMinReal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbMinReal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.tbMinReal.Location = new System.Drawing.Point(107, 71);
+            this.tbMinReal.Name = "tbMinReal";
+            this.tbMinReal.Size = new System.Drawing.Size(352, 20);
+            this.tbMinReal.TabIndex = 6;
+            this.tbMinReal.Text = "(((BaseDamage + (ScalingStat * ScaleFactor))) * 0.975) * (100 / (100 + V_Defense)" +
+    ")";
+            // 
+            // tbMaxTrue
+            // 
+            this.tbMaxTrue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.tbMaxTrue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbMaxTrue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.tbMaxTrue.Location = new System.Drawing.Point(107, 45);
+            this.tbMaxTrue.Name = "tbMaxTrue";
+            this.tbMaxTrue.Size = new System.Drawing.Size(352, 20);
+            this.tbMaxTrue.TabIndex = 5;
+            this.tbMaxTrue.Text = "((BaseDamage + (ScalingStat * ScaleFactor))) * 1.025";
+            // 
+            // tbMinTrue
+            // 
+            this.tbMinTrue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(73)))), ((int)(((byte)(74)))));
+            this.tbMinTrue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbMinTrue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.tbMinTrue.Location = new System.Drawing.Point(107, 19);
+            this.tbMinTrue.Name = "tbMinTrue";
+            this.tbMinTrue.Size = new System.Drawing.Size(352, 20);
+            this.tbMinTrue.TabIndex = 4;
+            this.tbMinTrue.Text = "((BaseDamage + (ScalingStat * ScaleFactor))) * 0.975";
+            // 
+            // lblMaxReal
+            // 
+            this.lblMaxReal.AutoSize = true;
+            this.lblMaxReal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.lblMaxReal.Location = new System.Drawing.Point(6, 99);
+            this.lblMaxReal.Name = "lblMaxReal";
+            this.lblMaxReal.Size = new System.Drawing.Size(98, 13);
+            this.lblMaxReal.TabIndex = 3;
+            this.lblMaxReal.Text = "Max Real Damage:";
+            // 
+            // lblMinReal
+            // 
+            this.lblMinReal.AutoSize = true;
+            this.lblMinReal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.lblMinReal.Location = new System.Drawing.Point(6, 73);
+            this.lblMinReal.Name = "lblMinReal";
+            this.lblMinReal.Size = new System.Drawing.Size(95, 13);
+            this.lblMinReal.TabIndex = 2;
+            this.lblMinReal.Text = "Min Real Damage:";
+            // 
+            // lblMaxTrue
+            // 
+            this.lblMaxTrue.AutoSize = true;
+            this.lblMaxTrue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.lblMaxTrue.Location = new System.Drawing.Point(6, 47);
+            this.lblMaxTrue.Name = "lblMaxTrue";
+            this.lblMaxTrue.Size = new System.Drawing.Size(98, 13);
+            this.lblMaxTrue.TabIndex = 1;
+            this.lblMaxTrue.Text = "Max True Damage:";
+            // 
+            // lblMinTrue
+            // 
+            this.lblMinTrue.AutoSize = true;
+            this.lblMinTrue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.lblMinTrue.Location = new System.Drawing.Point(6, 21);
+            this.lblMinTrue.Name = "lblMinTrue";
+            this.lblMinTrue.Size = new System.Drawing.Size(95, 13);
+            this.lblMinTrue.TabIndex = 0;
+            this.lblMinTrue.Text = "Min True Damage:";
+            // 
+            // RPGBalanceSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.Controls.Add(this.gbFormulas);
             this.Controls.Add(this.gbFunctions);
             this.Controls.Add(this.gbEnyStatus);
             this.Controls.Add(this.gbBuilds);
@@ -1385,10 +1518,11 @@ namespace IBS
             this.FlatBorder = true;
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(6, 151);
             this.MaximizeBox = false;
-            this.Name = "IntersectBalanceSystem";
-            this.Text = "Intersect Balancing System";
+            this.Name = "RPGBalanceSystem";
+            this.Text = "RPG Balance System";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudPlyrMaxLvl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPlyrAtk)).EndInit();
@@ -1424,6 +1558,8 @@ namespace IBS
             this.gbFunctions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvEny)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSummary)).EndInit();
+            this.gbFormulas.ResumeLayout(false);
+            this.gbFormulas.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1527,6 +1663,16 @@ namespace IBS
         private System.Windows.Forms.DataGridViewTextBoxColumn PlyrMagicDefense;
         private System.Windows.Forms.DataGridViewTextBoxColumn PlyrSpeed;
         private System.Windows.Forms.DataGridViewTextBoxColumn PlyrExp;
+        private DarkUI.Controls.DarkGroupBox gbFormulas;
+        private DarkUI.Controls.DarkTextBox tbMaxReal;
+        private DarkUI.Controls.DarkTextBox tbMinReal;
+        private DarkUI.Controls.DarkTextBox tbMaxTrue;
+        private DarkUI.Controls.DarkTextBox tbMinTrue;
+        private DarkUI.Controls.DarkLabel lblMaxReal;
+        private DarkUI.Controls.DarkLabel lblMinReal;
+        private DarkUI.Controls.DarkLabel lblMaxTrue;
+        private DarkUI.Controls.DarkLabel lblMinTrue;
+        private DarkUI.Controls.DarkButton btnInformation;
     }
 }
 

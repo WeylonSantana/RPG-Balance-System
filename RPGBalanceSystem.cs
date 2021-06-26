@@ -11,12 +11,13 @@ using DarkUI;
 using DarkUI.Controls;
 using Microsoft.Office.Interop.Excel;
 using System.IO;
+using DarkUI.Forms;
 
 namespace IBS
 {
-    public partial class IntersectBalanceSystem : DarkUI.Forms.DarkForm
+    public partial class RPGBalanceSystem : DarkUI.Forms.DarkForm
     {
-        public IntersectBalanceSystem()
+        public RPGBalanceSystem()
         {
             InitializeComponent();
         }
@@ -56,6 +57,10 @@ namespace IBS
             Classes.Properties.EnyScalingFac = (double)nudEnyScalFac.Value / 100;
             Classes.Properties.EnyCriticalFac = (double)nudEnyCrit.Value;
             Classes.Properties.Balanced = true;
+            Classes.Properties.MinTrueFormula = tbMinTrue.Text.ToString();
+            Classes.Properties.MaxTrueFormula = tbMaxTrue.Text.ToString();
+            Classes.Properties.MinRealFormula = tbMinReal.Text.ToString();
+            Classes.Properties.MaxRealFormula = tbMaxReal.Text.ToString();
             cboPlyrScalStat.SelectedIndex = 0;
             cboEnyScalStat.SelectedIndex = 0;
             rdBalanced.Checked = true;
@@ -67,6 +72,10 @@ namespace IBS
         {
             Classes.Properties.PlyrScalingStat = cboPlyrScalStat.SelectedIndex;
             Classes.Properties.EnyScalingStat = cboEnyScalStat.SelectedIndex;
+            Classes.Properties.MinTrueFormula = tbMinTrue.Text.ToString();
+            Classes.Properties.MaxTrueFormula = tbMaxTrue.Text.ToString();
+            Classes.Properties.MinRealFormula = tbMinReal.Text.ToString();
+            Classes.Properties.MaxRealFormula = tbMaxReal.Text.ToString();
             if (rdBalanced.Checked == true)
             {
                 Classes.Properties.Balanced = true;
@@ -390,6 +399,11 @@ namespace IBS
             }
 
             dgvSummary.Show();
+        }
+
+        private void btnInformation_Click(object sender, EventArgs e)
+        {
+            DarkMessageBox.ShowInformation("Accepted values:\n\n BaseDamage, ScalingStat, ScaleFactor \n A_Attack ---------- V_Attack \n A_Defense --------- V_Defense \n A_MagicAttack ---- V_MagicAttack \n A_MagicDefense -- V_MagicDefense, \n A_Speed ----------- V_Speed \n The amount of rows in the tables is defined by the maximum level of the player.", "Balancing System Information");
         }
     }
 }

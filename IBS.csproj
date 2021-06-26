@@ -60,18 +60,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Properties.cs" />
-    <Compile Include="IntersectBalanceSystem.cs">
+    <Compile Include="RPGBalanceSystem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="IntersectBalanceSystem.Designer.cs">
-      <DependentUpon>IntersectBalanceSystem.cs</DependentUpon>
+    <Compile Include="RPGBalanceSystem.Designer.cs">
+      <DependentUpon>RPGBalanceSystem.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Calculate.cs" />
     <Compile Include="Classes\Updating.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="IntersectBalanceSystem.resx">
-      <DependentUpon>IntersectBalanceSystem.cs</DependentUpon>
+    <EmbeddedResource Include="RPGBalanceSystem.resx">
+      <DependentUpon>RPGBalanceSystem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

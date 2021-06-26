@@ -33,9 +33,9 @@
         public static double EnyScalingFac;
         public static double EnyCriticalFac;
 
-        public static string MinTrueFormula = "((BaseDamage + (ScalingStat * ScaleFactor))) * 0.975";
-        public static string MaxTrueFormula = "((BaseDamage + (ScalingStat * ScaleFactor))) * 1.025";
-        public static string MinRealFormula = "(((BaseDamage + (ScalingStat * ScaleFactor))) * 0.975) * (100 / (100 + V_Defense))";
-        public static string MaxRealFormula = "(((BaseDamage + (ScalingStat * ScaleFactor))) * 1.025) * (100 / (100 + V_Defense))";
+        public static string MinTrueFormula;
+        public static string MaxTrueFormula;
+        public static string MinRealFormula;
+        public static string MaxRealFormula;
     }
 }
