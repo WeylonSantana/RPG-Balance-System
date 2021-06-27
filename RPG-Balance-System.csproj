@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7E55FF51-8DA8-4AC6-AD49-D685F1B34278}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>IBS</RootNamespace>
-    <AssemblyName>IBS</AssemblyName>
+    <RootNamespace>RPGBalanceSystem</RootNamespace>
+    <AssemblyName>RPG Balance System</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -84,6 +84,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

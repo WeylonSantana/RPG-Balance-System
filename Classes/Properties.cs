@@ -1,4 +1,4 @@
-﻿namespace IBS.Classes
+﻿namespace RPGBalanceSystem.Classes
 {
     public static class Properties
     {

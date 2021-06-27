@@ -13,7 +13,7 @@ using Microsoft.Office.Interop.Excel;
 using System.IO;
 using DarkUI.Forms;
 
-namespace IBS
+namespace RPGBalanceSystem
 {
     public partial class RPGBalanceSystem : DarkUI.Forms.DarkForm
     {

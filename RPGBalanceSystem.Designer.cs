@@ -1,5 +1,5 @@
 ﻿
-namespace IBS
+namespace RPGBalanceSystem
 {
     partial class RPGBalanceSystem
     {

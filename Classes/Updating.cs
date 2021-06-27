@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace IBS.Classes
+namespace RPGBalanceSystem.Classes
 {
     class Updating
     {
