@@ -104,7 +104,7 @@ namespace IBS
             this.btnSummaryGrid = new DarkUI.Controls.DarkButton();
             this.btnEnyGrid = new DarkUI.Controls.DarkButton();
             this.btnPlyrGrid = new DarkUI.Controls.DarkButton();
-            this.btnLoad = new DarkUI.Controls.DarkButton();
+            this.btnInformation = new DarkUI.Controls.DarkButton();
             this.btnSave = new DarkUI.Controls.DarkButton();
             this.btnUpdate = new DarkUI.Controls.DarkButton();
             this.dgvEny = new System.Windows.Forms.DataGridView();
@@ -131,7 +131,6 @@ namespace IBS
             this.EnyHitsTrue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EnyHitsReal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbFormulas = new DarkUI.Controls.DarkGroupBox();
-            this.btnInformation = new DarkUI.Controls.DarkButton();
             this.tbMaxReal = new DarkUI.Controls.DarkTextBox();
             this.tbMinReal = new DarkUI.Controls.DarkTextBox();
             this.tbMaxTrue = new DarkUI.Controls.DarkTextBox();
@@ -140,6 +139,7 @@ namespace IBS
             this.lblMinReal = new DarkUI.Controls.DarkLabel();
             this.lblMaxTrue = new DarkUI.Controls.DarkLabel();
             this.lblMinTrue = new DarkUI.Controls.DarkLabel();
+            this.lblStatus = new DarkUI.Controls.DarkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.nudPlyrMaxLvl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPlyrAtk)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPlyrDef)).BeginInit();
@@ -1119,7 +1119,7 @@ namespace IBS
             this.gbFunctions.Controls.Add(this.btnSummaryGrid);
             this.gbFunctions.Controls.Add(this.btnEnyGrid);
             this.gbFunctions.Controls.Add(this.btnPlyrGrid);
-            this.gbFunctions.Controls.Add(this.btnLoad);
+            this.gbFunctions.Controls.Add(this.btnInformation);
             this.gbFunctions.Controls.Add(this.btnSave);
             this.gbFunctions.Controls.Add(this.btnUpdate);
             this.gbFunctions.Location = new System.Drawing.Point(12, 467);
@@ -1159,15 +1159,15 @@ namespace IBS
             this.btnPlyrGrid.Text = "Player Grid";
             this.btnPlyrGrid.Click += new System.EventHandler(this.btnPlyrGrid_Click);
             // 
-            // btnLoad
+            // btnInformation
             // 
-            this.btnLoad.Location = new System.Drawing.Point(359, 19);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Padding = new System.Windows.Forms.Padding(5);
-            this.btnLoad.Size = new System.Drawing.Size(100, 25);
-            this.btnLoad.TabIndex = 2;
-            this.btnLoad.Text = "Load";
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            this.btnInformation.Location = new System.Drawing.Point(359, 19);
+            this.btnInformation.Name = "btnInformation";
+            this.btnInformation.Padding = new System.Windows.Forms.Padding(5);
+            this.btnInformation.Size = new System.Drawing.Size(100, 25);
+            this.btnInformation.TabIndex = 2;
+            this.btnInformation.Text = "Information";
+            this.btnInformation.Click += new System.EventHandler(this.btnInformation_Click);
             // 
             // btnSave
             // 
@@ -1389,7 +1389,6 @@ namespace IBS
             // gbFormulas
             // 
             this.gbFormulas.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
-            this.gbFormulas.Controls.Add(this.btnInformation);
             this.gbFormulas.Controls.Add(this.tbMaxReal);
             this.gbFormulas.Controls.Add(this.tbMinReal);
             this.gbFormulas.Controls.Add(this.tbMaxTrue);
@@ -1400,20 +1399,10 @@ namespace IBS
             this.gbFormulas.Controls.Add(this.lblMinTrue);
             this.gbFormulas.Location = new System.Drawing.Point(12, 562);
             this.gbFormulas.Name = "gbFormulas";
-            this.gbFormulas.Size = new System.Drawing.Size(467, 155);
+            this.gbFormulas.Size = new System.Drawing.Size(467, 131);
             this.gbFormulas.TabIndex = 4;
             this.gbFormulas.TabStop = false;
             this.gbFormulas.Text = "Formulas:";
-            // 
-            // btnInformation
-            // 
-            this.btnInformation.Location = new System.Drawing.Point(384, 123);
-            this.btnInformation.Name = "btnInformation";
-            this.btnInformation.Padding = new System.Windows.Forms.Padding(5);
-            this.btnInformation.Size = new System.Drawing.Size(75, 23);
-            this.btnInformation.TabIndex = 8;
-            this.btnInformation.Text = "Information";
-            this.btnInformation.Click += new System.EventHandler(this.btnInformation_Click);
             // 
             // tbMaxReal
             // 
@@ -1501,12 +1490,23 @@ namespace IBS
             this.lblMinTrue.TabIndex = 0;
             this.lblMinTrue.Text = "Min True Damage:";
             // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
+            this.lblStatus.Location = new System.Drawing.Point(18, 704);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(40, 13);
+            this.lblStatus.TabIndex = 8;
+            this.lblStatus.Text = "Status:";
+            // 
             // RPGBalanceSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.gbFormulas);
             this.Controls.Add(this.gbFunctions);
             this.Controls.Add(this.gbEnyStatus);
@@ -1561,6 +1561,7 @@ namespace IBS
             this.gbFormulas.ResumeLayout(false);
             this.gbFormulas.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1627,7 +1628,7 @@ namespace IBS
         public DarkUI.Controls.DarkGroupBox gbFunctions;
         public DarkUI.Controls.DarkButton btnUpdate;
         public DarkUI.Controls.DarkButton btnSave;
-        public DarkUI.Controls.DarkButton btnLoad;
+        public DarkUI.Controls.DarkButton btnInformation;
         public DarkUI.Controls.DarkButton btnPlyrGrid;
         public DarkUI.Controls.DarkButton btnEnyGrid;
         public DarkUI.Controls.DarkButton btnSummaryGrid;
@@ -1672,7 +1673,7 @@ namespace IBS
         private DarkUI.Controls.DarkLabel lblMinReal;
         private DarkUI.Controls.DarkLabel lblMaxTrue;
         private DarkUI.Controls.DarkLabel lblMinTrue;
-        private DarkUI.Controls.DarkButton btnInformation;
+        private DarkUI.Controls.DarkLabel lblStatus;
     }
 }
 
